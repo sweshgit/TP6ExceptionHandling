@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions xmlns:diag="http://thisdiagram" xmlns:Client="http://thisdiagram/Client" xmlns:IndicateFault="http://thisdiagram/IndicateFault" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_VyjlsGWnEeWQSq2yN3_lxw" bpdm:displayName="diag">
+  <pnlk:partnerLinkType name="IndicateFaultAndClient" bpdm:poolOneId="_gsMowGWnEeWQSq2yN3_lxw" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="IndicateFault" bpdm:poolTwoId="_VyjltmWnEeWQSq2yN3_lxw" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="Client">
+    <pnlk:role name="IndicateFault_for_Client" portType="IndicateFault:ForClient" bpdm:thisPoolId="_gsMowGWnEeWQSq2yN3_lxw">
+      <wsdl:portType name="ForClient">
+        <wsdl:operation name="Receie" bpdm:canid="_30BqgGWoEeWQSq2yN3_lxw._VyjluGWnEeWQSq2yN3_lxw._vF4rIGWnEeWQSq2yN3_lxw.">
+          <wsdl:input message="IndicateFault:ReceieRequest" name="Receie" bpdm:canid="_vGCcJ2WnEeWQSq2yN3_lxw" bpdm:senderId="_VyjluGWnEeWQSq2yN3_lxw" bpdm:receiverId="_vF4rIGWnEeWQSq2yN3_lxw" bpdm:senderName="Send" bpdm:receiverName="Receie" bpdm:receiverPoolId="_gsMowGWnEeWQSq2yN3_lxw" bpdm:dataobjectPointer="builtin:///xsd?xsdtype={http://www.w3.org/2001/XMLSchema}string" bpdm:bodyPartElemName="ReceieRequest" bpdm:bodyPartElemType="{http://www.w3.org/2001/XMLSchema}string"></wsdl:input>
+          <wsdl:output message="IndicateFault:ReceieResponse" name="ReceieResponse" bpdm:canid="_FD4-EGWpEeWQSq2yN3_lxw" bpdm:senderId="_30BqgGWoEeWQSq2yN3_lxw" bpdm:receiverId="_VyjluGWnEeWQSq2yN3_lxw" bpdm:senderName="Reply" bpdm:receiverName="Send" bpdm:receiverPoolId="_VyjltmWnEeWQSq2yN3_lxw" bpdm:bodyPartElemName="ReceieResponse" bpdm:bodyPartElemType="xs:string"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+</wsdl:definitions>

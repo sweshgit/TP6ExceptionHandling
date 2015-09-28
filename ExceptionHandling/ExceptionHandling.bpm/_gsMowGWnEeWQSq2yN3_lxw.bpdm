@@ -1,0 +1,114 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:this="http://thisdiagram/IndicateFault" xmlns:diag="http://thisdiagram" xmlns:Client="http://thisdiagram/Client" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IndicateFault">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IndicateFault" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_VyjltmWnEeWQSq2yN3_lxw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Client" bpdm:prefix="Client" bpdm:comment="contrib=&apos;partner-pool:///_VyjltmWnEeWQSq2yN3_lxw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForClient">
+                <wsdl:operation name="Receie" bpdm:source="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw">
+                    <wsdl:input message="this:ReceieRequest" name="Receie"/>
+                    <wsdl:output message="this:ReceieResponse" name="ReceieResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <xs:element name="ReceieRequest" type="xs:string" bpdm:source="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw"/>
+            <wsdl:message name="ReceieRequest" bpdm:source="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw">
+                <wsdl:part name="body" element="this:ReceieRequest"/>
+            </wsdl:message>
+            <xs:element name="ReceieResponse" type="xs:string" bpdm:source="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw"/>
+            <wsdl:message name="ReceieResponse" bpdm:source="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw">
+                <wsdl:part name="body" element="this:ReceieResponse"/>
+            </wsdl:message>
+            <bpel:binding name="CanonicBindingForClient" type="this:ForClient" bpdm:isSynchronized="true"/>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_VyjltmWnEeWQSq2yN3_lxw" bpdm:label="Client"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="IndicateFault" bpdm:ID="_gsMowGWnEeWQSq2yN3_lxw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="indicateFaultAndClientPlkVar" partnerLinkType="diag:IndicateFaultAndClient" myRole="IndicateFault_for_Client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForClient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/IndicateFault/Client" bpdm:providedIsDefault="true" bpdm:clientTasks="_gsMowGWnEeWQSq2yN3_lxw:_30BqgGWoEeWQSq2yN3_lxw, _gsMowGWnEeWQSq2yN3_lxw:_vF4rIGWnEeWQSq2yN3_lxw" bpdm:isManaged="true" bpdm:otherPoolId="_VyjltmWnEeWQSq2yN3_lxw"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisReceieRequestMsg" messageType="this:ReceieRequest" bpdm:id="_vGVXFWWnEeWQSq2yN3_lxw" bpdm:messageIds="inc:_vGCcJ2WnEeWQSq2yN3_lxw"/>
+            <bpel:variable name="thisReceieResponseMsg" messageType="this:ReceieResponse" bpdm:id="_FECICGWpEeWQSq2yN3_lxw" bpdm:messageIds=" out:_FD4-EGWpEeWQSq2yN3_lxw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:ReceieResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receie" partnerLink="indicateFaultAndClientPlkVar" portType="this:ForClient" isMyRole="true" enableSharing="false" bpdm:label="Receie" bpdm:ID="_vF4rIGWnEeWQSq2yN3_lxw">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceieRequestMsg" bpdm:msgVarScopeId="_gsMowGWnEeWQSq2yN3_lxw" bpdm:variableIsManaged="true" bpdm:messageType="this:ReceieRequest" bpdm:ID="_vGCcJ2WnEeWQSq2yN3_lxw"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpel:scope bpdm:label="Sub-One" bpdm:ID="_w9dQwGWnEeWQSq2yN3_lxw">
+                <bpel:faultHandlers>
+                    <bpel:catchAll>
+                        <bpdm:eventHandler bpdm:label="Error Intermediate Event" bpdm:ID="_kKGBEGWpEeWQSq2yN3_lxw" bpdm:type="error"></bpdm:eventHandler>
+                        <bpdm:messagingtask bpdm:label="Fault" bpdm:ID="_UYrhUGWqEeWQSq2yN3_lxw">
+                            <bpdm:linkset bpdm:type="assignments">
+                                <bpel:copy>
+                                    <bpel:from>"This is the error generated because of wrong value entered."</bpel:from>
+                                    <bpel:to>$thisReceieRequestMsg.body</bpel:to><mapper:mapperLink><mapper:vertice id="225446096" targetPath="$thisReceieRequestMsg.body" targetedBy="96180180-arg0"></mapper:vertice><mapper:vertice id="96180180" dimension="337x37" location="96,144"><mapper:value>"This is the error generated because of wrong value entered."</mapper:value></mapper:vertice></mapper:mapperLink>
+                                </bpel:copy>
+                            </bpdm:linkset>
+                        </bpdm:messagingtask>
+                    </bpel:catchAll>
+                </bpel:faultHandlers>
+                <bpel:sequence>
+                    <bpdm:messagingtask bpdm:label="Invoke" bpdm:ID="_w9masGWnEeWQSq2yN3_lxw"></bpdm:messagingtask>
+                    <bpdm:gateway bpdm:label="Condition" bpdm:ID="_Lf50sGWoEeWQSq2yN3_lxw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_MpFDSWWoEeWQSq2yN3_lxw" bpdm:targetDisplayName="[Condition - Output]">
+                            <bpel:condition>$thisReceieRequestMsg.body &gt;= 0
+<mapper:mapperLink>
+  <mapper:vertice id="338006591" targetPath="$condition" targetedBy="102453441-arg2"></mapper:vertice>
+  <mapper:vertice id="102453441" dimension="175x25" location="234,78">
+    <mapper:value>&gt;=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="768695726" sourcePath="$thisReceieRequestMsg.body" targetedBy="102453441-arg0"></mapper:vertice>
+  <mapper:vertice id="1187870629" dimension="97x37" location="96,132" targetedBy="102453441-arg1">
+    <mapper:value>0</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_-C902WWvEeWQSq2yN3_lxw" bpdm:targetDisplayName="default"></bpdm:linkset>
+                        <bpel:sequence>
+                            <bpdm:messagingtask bpdm:label="Output" bpdm:ID="_MpFDQGWoEeWQSq2yN3_lxw">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>"The value entered is correct and acceptable."</bpel:from>
+                                        <bpel:to>$thisReceieRequestMsg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="486768151" targetPath="$thisReceieRequestMsg.body" targetedBy="682083848-arg0"></mapper:vertice>
+  <mapper:vertice id="682083848" dimension="265x35" location="96,50">
+    <mapper:value>"The value entered is correct and acceptable."</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
+                        </bpel:sequence>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: error" bpdm:label="Inner Event" bpdm:ID="_-C900GWvEeWQSq2yN3_lxw">
+                                <bpdm:thrownFault faultName="this:Inner Event"/>
+                            </bpdm:messagingtask>
+                        </bpel:sequence>
+                    </bpdm:gateway>
+                </bpel:sequence>
+            </bpel:scope>
+            <bpdm:messagingtask operation="Receie" partnerLink="indicateFaultAndClientPlkVar" portType="this:ForClient" isMyRole="true" enableSharing="false" bpdm:label="Reply" bpdm:ID="_30BqgGWoEeWQSq2yN3_lxw">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$thisReceieRequestMsg.body</bpel:from>
+                        <bpel:to>$thisReceieResponseMsg.body/text()</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1054782550" targetPath="$thisReceieResponseMsg.body/text()" targetedBy="590547858-arg0"></mapper:vertice>
+  <mapper:vertice id="590547858" sourcePath="$thisReceieRequestMsg.body"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceieResponseMsg" bpdm:msgVarScopeId="_gsMowGWnEeWQSq2yN3_lxw" bpdm:variableIsManaged="true" bpdm:messageType="this:ReceieResponse" bpdm:ID="_FD4-EGWpEeWQSq2yN3_lxw"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

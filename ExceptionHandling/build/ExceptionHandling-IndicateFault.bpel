@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ode="http://www.apache.org/ode/type/extension" xmlns:this="http://exceptionhandling.com/ExceptionHandling/IndicateFault" xmlns:diag="http://exceptionhandling.com/ExceptionHandling" xmlns:Client="http://exceptionhandling.com/ExceptionHandling/Client" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpmn="http://www.intalio.com/bpms" xmlns:atomic="http://ode.apache.org/atomicScope" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" bpmn:label="IndicateFault" name="IndicateFault" bpmn:id="_gsMowGWnEeWQSq2yN3_lxw" targetNamespace="http://exceptionhandling.com/ExceptionHandling/IndicateFault">
+  <bpel:import namespace="http://exceptionhandling.com/ExceptionHandling" location="ExceptionHandling.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <bpel:import namespace="http://exceptionhandling.com/ExceptionHandling/IndicateFault" location="ExceptionHandling-IndicateFault.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <bpel:partnerLinks>
+    <bpel:partnerLink name="indicateFaultAndClientPlkVar" partnerLinkType="diag:IndicateFaultAndClient" myRole="IndicateFault_for_Client"/>
+  </bpel:partnerLinks>
+  <bpel:variables>
+    <bpel:variable name="thisReceieRequestMsg" messageType="this:ReceieRequest"/>
+    <bpel:variable name="thisReceieResponseMsg" messageType="this:ReceieResponse"/>
+  </bpel:variables>
+  <bpel:sequence>
+    <bpel:receive partnerLink="indicateFaultAndClientPlkVar" portType="this:ForClient" operation="Receie" variable="thisReceieRequestMsg" createInstance="yes" bpmn:label="Receie" name="Receie" bpmn:id="_vF4rIGWnEeWQSq2yN3_lxw"></bpel:receive>
+    <bpel:assign name="init-variables-IndicateFault" bpmn:id="_vF4rIGWnEeWQSq2yN3_lxw">
+      <bpel:copy bpmn:label="$thisReceieResponseMsg">
+        <bpel:from>
+          <bpel:literal>
+<this:ReceieResponse></this:ReceieResponse></bpel:literal>
+        </bpel:from>
+        <bpel:to>$thisReceieResponseMsg.body</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:scope bpmn:label="Sub-One" name="Sub-One" bpmn:id="_w9dQwGWnEeWQSq2yN3_lxw">
+      <bpel:faultHandlers>
+        <bpel:catchAll>
+          <bpel:assign bpmn:label="Fault" name="Fault" bpmn:id="_UYrhUGWqEeWQSq2yN3_lxw">
+            <bpel:copy>
+              <bpel:from>"This is the error generated because of wrong value entered."</bpel:from>
+              <bpel:to>$thisReceieRequestMsg.body</bpel:to>
+            </bpel:copy>
+          </bpel:assign>
+        </bpel:catchAll>
+      </bpel:faultHandlers>
+      <bpel:sequence>
+        <bpel:empty bpmn:label="Invoke" name="Invoke" bpmn:id="_w9masGWnEeWQSq2yN3_lxw"/>
+        <bpel:if>
+          <bpel:condition>$thisReceieRequestMsg.body&gt;= 0</bpel:condition>
+          <bpel:sequence>
+            <bpel:assign bpmn:label="Output" name="Output" bpmn:id="_MpFDQGWoEeWQSq2yN3_lxw">
+              <bpel:copy>
+                <bpel:from>"The value entered is correct and acceptable."</bpel:from>
+                <bpel:to>$thisReceieRequestMsg.body</bpel:to>
+              </bpel:copy>
+            </bpel:assign>
+          </bpel:sequence>
+          <bpel:else>
+            <bpel:sequence>
+              <bpel:throw faultName="this:Inner Event"/>
+            </bpel:sequence>
+          </bpel:else>
+        </bpel:if>
+      </bpel:sequence>
+    </bpel:scope>
+    <bpel:assign bpmn:label="Reply" name="Reply" bpmn:id="_30BqgGWoEeWQSq2yN3_lxw">
+      <bpel:copy>
+        <bpel:from>$thisReceieRequestMsg.body</bpel:from>
+        <bpel:to>$thisReceieResponseMsg.body</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:reply partnerLink="indicateFaultAndClientPlkVar" portType="this:ForClient" operation="Receie" variable="thisReceieResponseMsg" bpmn:label="Reply" name="Reply-1" bpmn:id="_30BqgGWoEeWQSq2yN3_lxw"></bpel:reply>
+  </bpel:sequence>
+</bpel:process>

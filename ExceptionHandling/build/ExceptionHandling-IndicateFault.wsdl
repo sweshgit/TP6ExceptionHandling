@@ -1,0 +1,38 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:this="http://exceptionhandling.com/ExceptionHandling/IndicateFault" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diag="http://exceptionhandling.com/ExceptionHandling" xmlns:Client="http://exceptionhandling.com/ExceptionHandling/Client" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://exceptionhandling.com/ExceptionHandling/IndicateFault">
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://exceptionhandling.com/ExceptionHandling/IndicateFault">
+            <xs:element name="ReceieRequest" type="xs:string"/>
+            <xs:element name="ReceieResponse" type="xs:string"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="ReceieRequest">
+        <wsdl:part name="body" element="this:ReceieRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReceieResponse">
+        <wsdl:part name="body" element="this:ReceieResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ForClient">
+        <wsdl:operation name="Receie">
+            <wsdl:input message="this:ReceieRequest" name="Receie"/>
+            <wsdl:output message="this:ReceieResponse" name="ReceieResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CanonicBindingForClient" type="this:ForClient">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Receie">
+            <soap:operation style="document" soapAction="http://exceptionhandling.com/ExceptionHandling/IndicateFault/ForClient/Receie"/>
+            <wsdl:input name="Receie">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReceieResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CanonicServiceForClient">
+        <wsdl:port name="canonicPort" binding="this:CanonicBindingForClient">
+            <soap:address location="http://localhost:8080/ode/processes/ExceptionHandling/ExceptionHandling/IndicateFault/Client"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

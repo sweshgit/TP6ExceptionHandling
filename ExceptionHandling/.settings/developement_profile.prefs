@@ -1,0 +1,14 @@
+
+build.required=yes
+deploy.fileRuntimeSelection=ExceptionHandling.bpm\:metadata.xsd\:ExceptionHandlingXMLSchema.xsd\:
+deploy_bundleShouldBeDeployed=true
+deploy_serverUrl=http\://localhost\:8080/ode
+deploymenttimeout=120
+diagram_baseUri=http\://exceptionhandling.com
+eclipse.preferences.version=1
+full.build.required=no
+is.mapper.too.many.elements.exceeded=no
+reset.node.cache=yes
+serverpingtimeout=10
+type=non.unique
+uuid=ea9c0e97-3af2-4b7c-b75a-ab719a08a69a

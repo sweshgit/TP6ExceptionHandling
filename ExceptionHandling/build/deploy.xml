@@ -1,0 +1,8 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<dd:deploy xmlns:dd="http://www.apache.org/ode/schemas/dd/2007/03"><dd:process xmlns:dd="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:diag="http://exceptionhandling.com/ExceptionHandling" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://exceptionhandling.com/ExceptionHandling/IndicateFault" xmlns:Client="http://exceptionhandling.com/ExceptionHandling/Client" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="this:IndicateFault" fileName="ExceptionHandling-IndicateFault.bpel">
+  <dd:property name="PATH">ExceptionHandling</dd:property>
+  <dd:property name="SVG">ExceptionHandling.svg</dd:property>
+  <dd:provide partnerLink="indicateFaultAndClientPlkVar">
+    <dd:service name="this:CanonicServiceForClient" port="canonicPort"></dd:service>
+  </dd:provide>
+</dd:process></dd:deploy>
